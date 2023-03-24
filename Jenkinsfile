@@ -13,8 +13,10 @@ pipeline {
                 echo "M2_HOME = /opt/maven"
             }
         }
-        stage('Checkout SCM') {
-  git 'https://github.com/Styvekamga/Jenkins-Repo.git'
+       stage('Checkout SCM') {
+   steps {
+       git branch: 'main', url: 'https://github.com/Styvekamga/Jenkins-Repo.git'
+   }
 }
         stage('Build') {
             steps {
