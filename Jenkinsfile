@@ -13,6 +13,9 @@ pipeline {
                 echo "M2_HOME = /opt/maven"
             }
         }
+        stage('Checkout SCM') {
+  git 'https://github.com/Styvekamga/Jenkins-Repo.git'
+}
         stage('Build') {
             steps {
                 dir('/var/lib/jenkins/workspace/New_demo/my-app')
