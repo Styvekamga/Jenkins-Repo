@@ -30,25 +30,22 @@ pipeline {
             }
         }
         
-       stage('SonarQube analysis') {
-           
+      stage('SonarQube analysis') {
+             steps {
                  def scannerHOME = tool 'sonarqube';
-               withSonarQubeEnv('sonarqube')
+               withSonarQubeEnv('sonarqube-8.9.7')
                 {
-                    
+                  
                     sh "${scannerHome}/bin/sonar-scanner \
                     -D sonar.login=admin \
-                    -D sonar.password=admin \
+                    -D sonar.password=sonar \
                     -D sonar.projectKey=New_demo \
                     -D sonar.exclusions=vendor/**,resources/**,**/*.java \
                     -D sonar.host.url=http://172.10.0.140:9000/"
                     
                 }
-            
-        }
-        
-        
-        
+            }
+        }      
     
         
         
