@@ -40,7 +40,7 @@ pipeline {
                 {
                  
                     sh "${SCANNER_HOME}/bin/sonar-scanner \
-                    -D sonar.sources= . \
+                    -D sonar.sources=. \
                     -D sonar.login=admin \
                     -D sonar.password=sonar \
                     -D sonar.projectKey=New_demo \
