@@ -30,22 +30,26 @@ pipeline {
             }
         }
         
-        stage('SonarQube analysis') {
-            
-               withSonarQubeEnv('sonarqube-8.9.7')
+       stage('SonarQube analysis') {
+           
+                 def scannerHOME = tool 'sonarqube';
+               withSonarQubeEnv('sonarqube')
                 {
-                    sh mvn sonar:sonar \
                     
-                    -D sonar.login=1f422341dd94db1e2f758dddbfa1caa727f1ff88 \
-                   
+                    sh "${scannerHome}/bin/sonar-scanner \
+                    -D sonar.login=admin \
+                    -D sonar.password=admin \
                     -D sonar.projectKey=New_demo \
                     -D sonar.exclusions=vendor/**,resources/**,**/*.java \
-                    -D sonar.host.url=http://172.10.0.140:9000/
+                    -D sonar.host.url=http://172.10.0.140:9000/"
                     
                 }
-        
+            
         }
         
+        
+        
+    
         
         
     }
