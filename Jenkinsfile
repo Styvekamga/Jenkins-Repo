@@ -32,7 +32,7 @@ pipeline {
         
       stage('SonarQube analysis') {
           environment {
-                def scannerHOME = tool 'sonarqube-8.9.7'
+                SCANNER_HOME = tool 'sonar-scanner'
             }
              steps {
                  
