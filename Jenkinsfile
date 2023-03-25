@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PATH = "$PATH:/usr/share/maven-3.0.5/bin"
+    }
 
     tools {
         maven "M2_HOME"
@@ -26,6 +29,19 @@ pipeline {
                 }
             }
         }
+        
+        stage('SonarQube analysis') {
+            steps {
+               withSonarQubeEnv('sonarqube-8.9')
+                {
+                    //sh "${scannerHome}/bin/sonar-scanner"
+                    sh "mvn sonar:sonar"
+                }
+            }
+        }
+        
+        
+        
     }
     post {
         always {
