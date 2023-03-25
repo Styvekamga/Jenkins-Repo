@@ -38,8 +38,8 @@ pipeline {
                  
                withSonarQubeEnv('sonarqube-8.9.7')
                 {
-                  
-                    sh" ${SCANNER_HOME**}**}/bin/sonar-scanner \
+                 
+                    sh "${SCANNER_HOME}/bin/sonar-scanner \
                     -D sonar.sources= . \
                     -D sonar.login=admin \
                     -D sonar.password=sonar \
